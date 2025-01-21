@@ -35,7 +35,7 @@ if(NOT TARGET Eigen3::Eigen OR NOT TARGET OpenVDB::openvdb)
   include(GNUInstallDirs)
   set(VDBFUSION_STANDALONE ON)
   find_package(Eigen3 REQUIRED)
-  include(${CMAKE_CURRENT_SOURCE_DIR}/../../../3rdparty/OpenVDB/OpenVDB.cmake)
+  find_package(OpenVDB REQUIRED)
 endif()
 
 target_sources(vdbfusion PRIVATE MarchingCubes.cpp VDBVolume.cpp)
