@@ -76,7 +76,6 @@ list(APPEND _OPENVDB_DEPENDENCIES TBB::tbb)
 list(APPEND _OPENVDB_DEPENDENCIES Blosc::blosc)
 target_link_libraries(OpenVDBHelper INTERFACE ${_OPENVDB_DEPENDENCIES})
 add_library(OpenVDB::openvdb ALIAS OpenVDBHelper)
-install(EXPORT OpenVDBHelper)
 install(
   TARGETS OpenVDBHelper
   EXPORT OpenVDBHelper
