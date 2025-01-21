@@ -32,7 +32,7 @@ include(GNUInstallDirs)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_INSTALL_FULL_LIBDIR}/cmake/OpenVDB")
 set(VDBFUSION_STANDALONE ON)
 find_package(Eigen3 REQUIRED)
-find_package(OpenVDB REQUIRED)
+# find_package(OpenVDB REQUIRED)
 
 target_sources(vdbfusion PRIVATE MarchingCubes.cpp VDBVolume.cpp)
 target_compile_features(vdbfusion PUBLIC cxx_std_11)
