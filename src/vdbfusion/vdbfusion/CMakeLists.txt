@@ -23,6 +23,9 @@
 cmake_minimum_required(VERSION 3.10)
 project(VDBFusion VERSION 0.1.6 LANGUAGES CXX)
 
+set(CMAKE_POLICY_DEFAULT_CMP0077 NEW) # disallow option() from overwriting set()
+set(BUILD_SHARED_LIBS OFF)
+
 add_library(vdbfusion STATIC)
 add_library(VDBFusion::vdbfusion ALIAS vdbfusion)
 
@@ -30,11 +33,10 @@ add_library(VDBFusion::vdbfusion ALIAS vdbfusion)
 if(NOT TARGET Eigen3::Eigen OR NOT TARGET OpenVDB::openvdb)
   message(STATUS "Building only VDBFusion C++ module")
   include(GNUInstallDirs)
-  list(APPEND CMAKE_MODULE_PATH "${CMAKE_INSTALL_FULL_LIBDIR}/cmake/OpenVDB")
   set(VDBFUSION_STANDALONE ON)
   find_package(Eigen3 REQUIRED)
-  find_package(TBB REQUIRED)
-  find_package(openvdb_vendor REQUIRED)
+  list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/")
+  find_package(OpenVDB REQUIRED)
 endif()
 
 target_sources(vdbfusion PRIVATE MarchingCubes.cpp VDBVolume.cpp)
