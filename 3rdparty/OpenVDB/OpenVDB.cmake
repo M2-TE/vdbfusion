@@ -77,3 +77,9 @@ list(APPEND _OPENVDB_DEPENDENCIES Blosc::blosc)
 target_link_libraries(OpenVDBHelper INTERFACE ${_OPENVDB_DEPENDENCIES})
 add_library(OpenVDB::openvdb ALIAS OpenVDBHelper)
 install(EXPORT OpenVDBHelper)
+install(
+  TARGETS openvdb
+  EXPORT OpenVDBHelper
+  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/openvdb
+  INCLUDES
+  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
